@@ -1,0 +1,48 @@
+version: '3.8'
+
+services:
+  cafe-db:
+    image: mysql
+    container_name: cafe-db
+    environment: 
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: cafe 
+    ports:
+      - 3307:3306
+    volumes:
+     - cafe-management:/var/lib/mysql
+    networks:
+     - backend
+     
+  cafe-backend:
+    image: cafe-management/backend:1.0
+    container_name: cafe-backend
+    ports:
+      - 8081:8081
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://cafe-db:3306/cafe?createDatabaseIfNotExist=true&allowPublicKeyRetrieval=true&useSSL=false
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: password
+    depends_on:
+      - cafe-db
+    networks:
+      - backend
+      - frontend
+      
+  cafe-frontend:
+    image: cafe-management/frontend:1.0
+    container_name: cafe-frontend
+    ports: 
+      - 4200:80
+    depends_on:
+      - cafe-backend
+    networks:
+      - frontend
+
+
+volumes:
+  cafe-management:
+  
+networks:
+  backend:
+  frontend:

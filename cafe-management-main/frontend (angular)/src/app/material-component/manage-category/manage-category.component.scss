@@ -1,0 +1,64 @@
+.main-card {
+    position: relative;
+}
+
+.float-right {
+    border: 2px solid white;
+    color: white;
+    background-color: #a1887f;
+    position: absolute;
+    right: 20px;
+    top: 11px;
+    transition: all 0.3s ease-in-out;
+}
+
+.float-right:hover {
+    color: #a1887f;
+    background-color: #fff;
+}
+
+mat-card {
+    background-color: #a1887f;
+    color: white;
+    font-size: 20px;
+    text-align: center;
+    padding: 20px;
+}
+
+.filter {
+    background-color: white;
+    color: #1E1D1D;
+    border: 2px solid #a1887f;
+    font-size: 15px;
+    text-align: center;
+}
+
+body {
+    font-family: Poppins, sans-serif;
+    margin: 0;
+}
+
+table {
+    width: 100%;
+    border: 2px solid #a1887f;
+    border-radius: 5px;
+}
+
+::ng-deep.highlight {
+    color: white;
+    background: #a1887f;
+}
+
+.spacer {
+    margin: 20px;
+}
+
+@media screen and (max-width: 700px) {
+    mat-card {
+        background-color: #a1887f;
+        color: white;
+        font-size: 20px;
+        text-align: left;
+        padding: 20px;
+    }
+}
